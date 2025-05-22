@@ -1,27 +1,44 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+using Hiring_and_Selection_Process_Platform.Data;
 using Hiring_and_Selection_Process_Platform.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace Hiring_and_Selection_Process_Platform.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly MyAppContext context;
+
+
+
+
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, MyAppContext context)
     {
         _logger = logger;
+        this.context = context;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var jobs = context.Jobs.ToList();
+        return View(jobs);
     }
 
     public IActionResult Privacy()
     {
         return View();
     }
+
+
+
+
+
+
+
+
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

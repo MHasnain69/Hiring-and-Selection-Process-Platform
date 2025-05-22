@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Hiring_and_Selection_Process_Platform.Models;
+using Hiring_and_Selection_Process_Platform.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<MyAppContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 

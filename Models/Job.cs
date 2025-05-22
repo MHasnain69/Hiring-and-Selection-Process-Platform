@@ -2,11 +2,10 @@
 
 namespace Hiring_and_Selection_Process_Platform.Models
 {
-    public class Jobs
+    public class Job
     {
         [Key]
-        private int jobId { get; set; }
-
+        public int jobId { get; set; }
 
         public string jobTitle { get; set; }
         public string jobDescription { get; set; }
