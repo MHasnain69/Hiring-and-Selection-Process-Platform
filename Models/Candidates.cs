@@ -7,9 +7,14 @@ namespace Hiring_and_Selection_Process_Platform.Models
     {
         [Key]
         public int candidateId { get; set; }
-        public string candidateName { get; set; }
-        public string candidateEmail { get; set; }
+        public string? candidateName { get; set; }
+        public string? candidateEmail { get; set; }
         public string candidateContact { get; set; }
         public int candidateAge { get; set; }
+
+
+
+
+
     }
 }

@@ -15,25 +15,40 @@ namespace Hiring_and_Selection_Process_Platform.Controllers
         }
 
 
-        //[HttpGet]
-        //[Route("Job/GetAllJobs")]
-        //public IActionResult GetAllJobs()
-        //{
-        //    var jobs = context.Jobs.ToList();
-        //    return View(jobs);
-        //}
+        [HttpGet]
+        [Route("Job")]
+        public IActionResult GetAllJobs()
+        {
+            var jobs = context.Jobs.ToList();
+            return View(jobs);
+        }
+
+        // GET: /Job/CreateJob - Displays the form
+        [HttpGet]
+        [Route("Job/CreateJob")]
+        public IActionResult CreateJob()
+        {
+            return View(); // Renders CreateJob.cshtml
+        }
 
         [HttpPost]
         [Route("Job/CreateJob")]
-        public IActionResult CreateJob([FromBody] Job job)
+        public async Task<IActionResult> CreateJob(Job job)
         {
             if (ModelState.IsValid)
             {
-                context.Jobs.Add(job);
-                context.SaveChanges();
-                return Ok(new { message = "Job created successfully" });
+                try
+                {
+                    context.Jobs.Add(job);
+                    await context.SaveChangesAsync();
+                    return RedirectToAction("Index"); // Redirect to the job list page
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "An error occurred while creating the job: " + ex.Message);
+                }
             }
-            return BadRequest(ModelState);
+            return View(job); // Return to the form with validation errors
         }
 
         [HttpPut]

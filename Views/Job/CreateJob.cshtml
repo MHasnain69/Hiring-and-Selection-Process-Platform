@@ -1,27 +1,74 @@
-﻿@model Hiring_and_Selection_Process_Platform.Models.Job;
+﻿@model Hiring_and_Selection_Process_Platform.Models.Job
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
     ViewData["Title"] = "Create Job";
 }
 
-<h1>Create Job</h1>
-
+<h2>Create Job</h2>
 
 <form asp-action="CreateJob" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
-        <label for="Name">Name</label>
-        <input type="text" class="form-control" asp-for="name" />
+        <label asp-for="jobTitle"></label>
+        <input asp-for="jobTitle" class="form-control" />
+        <span asp-validation-for="jobTitle" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="Age">Age</label>
-        <input type="number" class="form-control" asp-for="age" />
+        <label asp-for="jobDescription"></label>
+        <textarea asp-for="jobDescription" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="jobDescription" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group">
+        <label asp-for="jobLocation"></label>
+        <input asp-for="jobLocation" class="form-control" />
+        <span asp-validation-for="jobLocation" class="text-danger"></span>
+    </div>
 
+    <div class="form-group">
+        <label asp-for="jobType"></label>
+        <select asp-for="jobType" class="form-control">
+            <option value="Part Time">Part Time</option>
+            <option value="Full Time">Full Time</option>
+            <option value="Intern">Intern</option>
+        </select>
+        <span asp-validation-for="jobType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="jobSalary"></label>
+        <input asp-for="jobSalary" class="form-control" />
+        <span asp-validation-for="jobSalary" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="jobCompanyName"></label>
+        <input asp-for="jobCompanyName" class="form-control" />
+        <span asp-validation-for="jobCompanyName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="jobRequirements"></label>
+        <textarea asp-for="jobRequirements" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="jobRequirements" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="deadline"></label>
+        <input type="date" asp-for="deadline" class="form-control" />
+        <span asp-validation-for="deadline" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="noEmployees"></label>
+        <input type="number" asp-for="noEmployees" class="form-control" />
+        <span asp-validation-for="noEmployees" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
 </form>
