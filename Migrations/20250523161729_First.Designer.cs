@@ -4,6 +4,7 @@ using Hiring_and_Selection_Process_Platform.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hiring_and_Selection_Process_Platform.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    partial class MyAppContextModelSnapshot : ModelSnapshot
+    [Migration("20250523161729_First")]
+    partial class First
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,31 +24,6 @@ namespace Hiring_and_Selection_Process_Platform.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Hiring_and_Selection_Process_Platform.Models.Candidates", b =>
-                {
-                    b.Property<int>("candidateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("candidateId"));
-
-                    b.Property<int>("candidateAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("candidateContact")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("candidateEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("candidateName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("candidateId");
-
-                    b.ToTable("Candidates");
-                });
 
             modelBuilder.Entity("Hiring_and_Selection_Process_Platform.Models.Job", b =>
                 {
@@ -55,7 +33,7 @@ namespace Hiring_and_Selection_Process_Platform.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("jobId"));
 
-                    b.Property<DateTime?>("deadline")
+                    b.Property<DateTime>("deadline")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("jobCompanyName")

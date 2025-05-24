@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Hiring_and_Selection_Process_Platform.Migrations
 {
     /// <inheritdoc />
-    public partial class Test_Migration : Migration
+    public partial class First : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,15 +17,15 @@ namespace Hiring_and_Selection_Process_Platform.Migrations
                 {
                     jobId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    jobTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    jobDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    jobLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    jobType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    jobSalary = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    jobCompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    jobRequirements = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    jobTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    jobDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    jobLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    jobType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    jobSalary = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    jobCompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    jobRequirements = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     deadline = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    noEmployees = table.Column<int>(type: "int", nullable: false)
+                    noEmployees = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

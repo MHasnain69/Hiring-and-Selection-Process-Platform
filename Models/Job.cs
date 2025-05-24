@@ -14,7 +14,7 @@ namespace Hiring_and_Selection_Process_Platform.Models
         public string? jobSalary { get; set; }
         public string? jobCompanyName { get; set; }
         public string? jobRequirements { get; set; }
-        public DateTime deadline { get; set; }
+        public DateTime? deadline { get; set; }
         public int? noEmployees { get; set; } // number of employees required for the job
 
 

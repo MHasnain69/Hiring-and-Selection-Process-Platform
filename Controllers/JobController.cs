@@ -33,20 +33,14 @@ namespace Hiring_and_Selection_Process_Platform.Controllers
 
         [HttpPost]
         [Route("Job/CreateJob")]
-        public async Task<IActionResult> CreateJob(Job job)
+        public IActionResult CreateJob(Job job)
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    context.Jobs.Add(job);
-                    await context.SaveChangesAsync();
-                    return RedirectToAction("Index"); // Redirect to the job list page
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "An error occurred while creating the job: " + ex.Message);
-                }
+                context.Jobs.Add(job);
+                context.SaveChangesAsync();
+                return RedirectToAction("Index"); // Redirect to the job list page
+
             }
             return View(job); // Return to the form with validation errors
         }

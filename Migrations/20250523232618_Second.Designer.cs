@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hiring_and_Selection_Process_Platform.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20250520182140_Test_Migration")]
-    partial class Test_Migration
+    [Migration("20250523232618_Second")]
+    partial class Second
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Hiring_and_Selection_Process_Platform.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Hiring_and_Selection_Process_Platform.Models.Jobs", b =>
+            modelBuilder.Entity("Hiring_and_Selection_Process_Platform.Models.Job", b =>
                 {
                     b.Property<int>("jobId")
                         .ValueGeneratedOnAdd()
@@ -33,38 +33,31 @@ namespace Hiring_and_Selection_Process_Platform.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("jobId"));
 
-                    b.Property<DateTime>("deadline")
+                    b.Property<DateTime?>("deadline")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("jobCompanyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("jobDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("jobLocation")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("jobRequirements")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("jobSalary")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("jobTitle")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("jobType")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("noEmployees")
+                    b.Property<int?>("noEmployees")
                         .HasColumnType("int");
 
                     b.HasKey("jobId");
