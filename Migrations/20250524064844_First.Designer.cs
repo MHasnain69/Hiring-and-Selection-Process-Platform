@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hiring_and_Selection_Process_Platform.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20250523232618_Second")]
-    partial class Second
+    [Migration("20250524064844_First")]
+    partial class First
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,34 @@ namespace Hiring_and_Selection_Process_Platform.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Hiring_and_Selection_Process_Platform.Models.Candidates", b =>
+                {
+                    b.Property<int>("candidateId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("candidateId"));
+
+                    b.Property<int>("candidateAge")
+                        .HasColumnType("int");
+
+                    b.Property<string>("candidateContact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("candidateEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("candidateName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("candidateId");
+
+                    b.ToTable("Candidates");
+                });
 
             modelBuilder.Entity("Hiring_and_Selection_Process_Platform.Models.Job", b =>
                 {

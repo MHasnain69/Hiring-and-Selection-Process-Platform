@@ -20,6 +20,7 @@ namespace Hiring_and_Selection_Process_Platform.Data
 
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Candidates> Candidates { get; set; }
+        public DbSet<Education> Educations { get; set; }
 
     }
 }
